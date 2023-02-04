@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    <style>
+      input {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="input" placeholder="Password" /> <br />
+      <button id="password-btn" onclick="password()">Password</button>
+      <button id="copy-btn" onclick="copy()">Copy</button>
+    </div>
+    <script>
+      function password() {
+        let character =
+          "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let pass = "";
+        for (let i = 0; i < 8; i++) {
+          let randomNum = Math.floor(Math.random() * character.length);
+          pass += character.substring(randomNum, randomNum + 1);
+        }
+        document.getElementById("input").value = pass;
+      }
+
+      function copy() {
+        passInput = document.getElementById("input");
+        passInput.select();
+        navigator.clipboard.writeText(passInput.value);
+        alert("copied");
+      }
+    </script>
+  </body>
+</html>
